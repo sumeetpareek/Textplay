@@ -493,176 +493,95 @@ end
 
 
 # HTML page structure and CSS
-htmlStart = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"
-\"http://www.w3.org/TR/html4/strict.dtd\">
-<html>
+htmlStart = "<!doctype html>
+<html lang='en'>
+
 <head>
-<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">
-<title>#{title}</title>
-<meta name=\"generator\" content=\"Textplay\">
-<style type=\"text/css\" media=\"all\">
+  <!-- Required meta tags -->
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
 
-/* ---------- PAGE STYLES ---------- */
+  <!-- Bootstrap CSS -->
+  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO'
+    crossorigin='anonymous'>
+  
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Mono:400,700' rel='stylesheet'>
+  <!-- <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet'> -->
+  <!-- <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'> -->
+  <!-- <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'> -->
 
-/* all page margins are maximums */
-@page {
-size: 8.5in 11in;
-margin-top:1in;
-margin-right:1in;
-margin-bottom:.5in;
-margin-left:1.5in;
-}
-/* This makes the page-counter start on the first page of the screenplay */
-div#screenplay {
-counter-reset: page 1;
-page: Screenplay;
-prince-page-group: start;
-}
-@page Screenplay {
-/* Page Numbers */
-@top-right-corner {
-font: 12pt \"#{font}\", courier, monospace;
-content: counter(page)\".\";
-vertical-align: bottom;
-padding-bottom: 1em;
-}
-/* Define Header */
-@top-left {
-content: \"\";
-font: italic 10pt Georgia;
-color: #888;
-vertical-align: bottom;
-padding-bottom: 1.3em;
-}
-/* Define Footer */
-@bottom-left {
-content: \"\";
-font: italic 10pt Georgia;
-color: #888;
-vertical-align:top;
-padding-top:0;
-}
-}
-/* removes the header and page-numbers from the first page */
-@page Screenplay:first {
-@top-right-corner { content: normal; }
-@top-left { content: normal; }
-}
-/* These control where page-breaks can and cannot happen */
-p {
-orphans: 2;
-widows: 2;
-}
-dl {
-page-break-inside:avoid;
-}
-dt, h2, h5 {
-page-break-after: avoid;
-}
-dd.parenthetical {
-orphans: 3;
-widows: 3;
-page-break-before: avoid;
-page-break-after: avoid;
-}
-dd {
-page-break-before:avoid;
-}
-div.page-break {
-page-break-after:always;
-}
-h3 {
-page-break-before: avoid;
-}
+  <title>#{title}</title>
+  <!-- <meta name='description' content='TODO'> -->
+
+  <!-- FACEBOOK OPEN GRAPH MARKUP https://developers.facebook.com/docs/sharing/best-practices -->
+  <!-- TODO -->
+
+  
+  <style type='text/css' media='all'>
 /* by default Prince bookmarks all headings, no thanks */
 h3, h4, h5, h6 {
 prince-bookmark-level: none;
 }
 
 /* ---------- COMMON LAYOUT ---------- */
-
-:lang(jp) {
-font-family: osaka;
-}
-
 body {
-font-family: \"#{font}\", courier, monospace;
-font-size: 12pt;
-line-height: 1;
+font-family: 'Cutive Mono', courier, monospace, sans-serif;
+font-size: 1em;
+line-height: 1.5;
 }
 #screenplay {
-width: 6in;
-margin:0 auto;
+    background: transparent;
 }
 p.center {
 text-align:center;
-margin-left:0;
-width:90%;
 }
 p {
-margin-top:12pt;
-margin-bottom:12pt;
-margin-left:0;
-padding-right:.25in;
-width:6in;
-white-space: #{wrap_paragraphs};
+white-space: pre-wrap;
 }
 
 /*Character Names*/
 
 dt {
 font-weight:normal;
-margin-top:1em;
-margin-left:2in;
-padding-right:.25in;
-width:4in;
+}
+
+p.character {
+  margin-bottom: 0;
 }
 
 /*Parentheticals*/
 
 dd.parenthetical {
-margin-left:1.6in;
-text-indent:-.12in;
-width: 2in;
-padding-right:2.66in;
+    background: transparent;
 }
 
 /*Dialogue*/
 
 dd {
-margin:0;
-margin-left: 1in;
-width: 3.5in;
-padding-right:1.75in;
 line-height: inherit;
-white-space: #{wrap_paragraphs};
+white-space: pre-wrap;
 }
 
 /* Dual-Dialogue-blocks */
 
 div.dialogue_wrapper {
-overflow:auto;
-width:100%;
+    background: transparent;
 }
 
 dl.dual {
-width:2.9in;
+    background: transparent;
 }
 
 dl.dual dt, dl.dual dd {
-margin-left:0;
-width:2.5in;
-padding-right:.25in;
+    background: transparent;
 }
 
 dl.dual.first {
 float:left;
-margin-top:-12pt;
 }
 
 dl.dual.second {
 margin-right:0;
-margin-left:auto;
 }
 
 dl.dual dt {
@@ -670,8 +589,7 @@ text-align:center;
 }
 
 dl.dual dd.parenthetical {
-width:2.1in;
-margin-left:.32in;
+    background: transparent;
 }
 
 /* Lyrics */
@@ -683,48 +601,42 @@ span.lyric i {
 font-style: normal;
 }
 
-
 /* Sluglines and Transitions */
 
 h1,h2,h3,h4,h5,h6 {
-font-weight: normal;
-font-size: 12pt;
 margin-top: 1em;
 margin-bottom: 1em;
 padding-right:.25in;
+font-size: 1em;
 text-transform:uppercase;
 }
 
 /* Full Sluglines */
 
 h2 {
-width: inherit;
-margin-top: #{slugline_spacing}em;
+margin-top: 1em;
 margin-bottom: 12pt;
 margin-left: 0;
-text-decoration: #{underlined_sluglines};
-font-weight: #{bold_sluglines};
+text-decoration: none;
 }
 
 /* Right Transitions */
 
 h3 {
-margin-left: 4in;
-width: 2in;
+color: #aaa;
 }
 
 /* Left Transitions */
 
 h4 {
-
+    background: transparent;
 }
 
 /* Goldman Sluglines */
 
 h5 {
-margin-top: #{slugline_spacing}em;
-font-weight: #{bold_sluglines};
-text-decoration: #{underlined_sluglines};
+margin-top: 1em;
+text-decoration: none;
 }
 
 span.underline {
@@ -736,16 +648,23 @@ display:none
 
 .revised { background:rgba(255, 255, 0, 0.2); }
 
+u {
+    text-decoration: none;
+    border-bottom: 1px solid;
+}
 </style>
+
 </head>
 <body>
+<div class='container my-5'>
 
-<div id=\"screenplay\">
+<div id=\"screenplay\" class='row'>
 "
 
 # HTML footer
 htmlEnd = '
 </div><!-- end screenplay -->
+</div><!-- end opening-container -->
 </body>
 </html>
 '
@@ -1085,27 +1004,27 @@ else
   text = text.gsub(/<\/note>/, '</p>')
   text = text.gsub(/<meta_block>(.|\n)+?<\/meta_block>/, '<!--\0-->')
   text = text.gsub(/<page-break \/>/, '<div class="page-break"></div>')
-  text = text.gsub(/<transition>/, '<h3 class="right-transition">')
+  text = text.gsub(/<transition>/, '<h3 class="right-transition col-12 col-md-8">')
   text = text.gsub(/<\/transition>/, '</h3>')
   text = text.gsub(/<sceneheading>/, '<h2 class="full-slugline">')
   text = text.gsub(/<\/sceneheading>/, '</h2>')
-  text = text.gsub(/<slug>/, '<h5 class="goldman-slugline">')
+  text = text.gsub(/<slug>/, '<h5 class="goldman-slugline col-12 col-md-8">')
   text = text.gsub(/<\/slug>/, '</h5>')
   text = text.gsub(/<center>/, '<p class="center">')
   text = text.gsub(/<\/center>/, '</p>')
   text = text.gsub(/<wrap>/, '<div class="dialogue_wrapper">')
   text = text.gsub(/<\/wrap>/, '</div>')
-  text = text.gsub(/<dialogue( class="dual (first|second)")?>/,'<dl\1>')
-  text = text.gsub(/<\/dialogue>/,'</dl>')
-  text = text.gsub(/<character>/, '<dt class="character">')
-  text = text.gsub(/<\/character>/, '</dt>')
+  text = text.gsub(/<dialogue( class="dual (first|second)")?>/,'<div class="col-sm-6 col-md-4 offset-sm-2 col-9 offset-1" \1>')
+  text = text.gsub(/<\/dialogue>/,'</div><div class="w-100"></div>')
+  text = text.gsub(/<character>/, '<p class="character text-center">')
+  text = text.gsub(/<\/character>/, '</p>')
   text = text.gsub(/<paren>/, '<dd class="parenthetical">')
   text = text.gsub(/<\/paren>/, '</dd>')
-  text = text.gsub(/<talk>/, '<dd class="dialogue">')
-  text = text.gsub(/<\/talk>/, '</dd>')
+  text = text.gsub(/<talk>/, '<p class="dialogue">')
+  text = text.gsub(/<\/talk>/, '</p>')
   text = text.gsub(/<lyric>/, '<span class="lyric">')
   text = text.gsub(/<\/lyric>/, '</span>')
-  text = text.gsub(/<action>/, '<p class="action">')
+  text = text.gsub(/<action>/, '<p class="action col-12 col-md-8">')
   text = text.gsub(/<\/action>/, '</p>')
   text = text.gsub(/<revised>/, '<span class="revised">')
   text = text.gsub(/<\/revised>/, '</span>')
